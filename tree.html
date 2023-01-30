@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+              CSS.supports('top: constant(a)'))
+            document.write(
+              '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+              (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title></title>
+        <link rel="stylesheet" href="./tree.css" />
+        <!--preload-links-->
+        <!--app-context-->
+    </head>
+    <body>
+        <div class="merry">Merry Christmas</div>
+        <div class="star"></div>
+        <ul class="tree" id="tree"></ul>
+        <script type="module">
+            function createTree(){
+                    for (let i=0;i<180;i++) {
+                            // 创建li元素
+                            let li=document.createElement('li');
+                            // 设置li元素的样式
+                            // --h、--d为自定义属性，可通过var函数对其调用
+                            // --h：线条高度
+                            // --d：动画的延迟时间
+                            li.style.cssText='height:calc(60vh / 180 * '+i+'); animation-delay:calc(-30s / 180 * '+i+');';
+                            // 追加li元素
+                            document.getElementById('tree').appendChild(li);
+                    }
+            }
+            window.addEventListener('load',()=>{
+                    // 加载完毕后，构建树
+                    createTree();
+            })
+        </script>
+    </body>
+</html>
